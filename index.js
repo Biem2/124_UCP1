@@ -79,3 +79,5 @@ db.sequelize
     console.error('DB connection or sync error:', err);
     process.exit(1);
   });
+
+  
