@@ -1,34 +1,29 @@
+// models/Hotel.js
 module.exports = (sequelize, DataTypes) => {
   const Hotel = sequelize.define('Hotel', {
-    id: {
+    tipe_kamar: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    kapasitas_tamu: {
       type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
+      allowNull: false
     },
-    Tipe_Kamar: {
+    lantai: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    fasilitas: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
-    Kapasitas_Tamu: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    Lantai: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-    },
-    Fasilitas: {
-        type: DataTypes.TEXT,
-        allowNull: false,
-    },
-    Tanggal_Pesan: {
-        type: DataTypes.DATE,
-        allowNull: false,
+    tanggal_pesanan: {
+      type: DataTypes.DATE,
+      allowNull: false
     }
   }, {
-    tableName: "Hotel",
-    freezeTableName: true,
-    timestamps: true,
+    tableName: 'Hotels', // atau nama tabel kamu
+    timestamps: false
   });
 
   return Hotel;

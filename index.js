@@ -11,7 +11,7 @@ app.post('/Hotel', async (req, res) => {
   const { tipe_kamar, kapasitas_tamu, lantai,fasilitas, tanggal_pesanan} = req.body;
   
   if (!tipe_kamar || !kapasitas_tamu|| !lantai || !fasilitas || !tanggal_pesanan) {
-    return res.status(400).json({ error: 'Masih Salah' });
+    return res.status(400).json({ error: 'Masih' });
   }
 
   try {
@@ -35,15 +35,15 @@ app.get('/Hotel', async (req, res) => {
 });
 
 // Update
-app.put('/Hotel/:Id', async (req, res) => {
+app.put('/Hotel/:id', async (req, res) => {
   const HotelId = req.params.id;
-  const { tipe_kamar, kapasitas_tamu, lantai, fasilitas, Tanggal_pesanan } = req.body;
+  const { tipe_kamar, kapasitas_tamu, lantai, fasilitas, tanggal_pesanan } = req.body;
 
   try {
     const Hotel = await db.Hotel.findByPk(HotelId);
     if (!Hotel) return res.status(404).json({ error: 'Hotel sudah terpesan' });
 
-    await Hotel.update({ tipe_kamar, kapasitas_tamu, lantai, fasilitas, Tanggal_pesanan });
+    await Hotel.update({ tipe_kamar, kapasitas_tamu, lantai, fasilitas, tanggal_pesanan });
     res.status(200).json(Hotel);
   } catch (error) {
     console.error(`PUT /Hotel/${HotelId} error:`, error);
@@ -52,7 +52,7 @@ app.put('/Hotel/:Id', async (req, res) => {
 });
 
 // Delete
-app.delete('/Hotel/:Id', async (req, res) => {
+app.delete('/Hotel/:id', async (req, res) => {
   const HotelId = req.params.id;
   try {
     const Hotel = await db.Hotel.findByPk(HotelId);
